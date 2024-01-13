@@ -1,0 +1,35 @@
+<div class="modal-backdrop"
+     *ngIf="isVisible">
+       <div class="modal-content">
+              <div class="modal">
+                     <!-- Modal content -->
+                     <div class="modal-header">
+                            <h5 class="modal-title">{{type}}</h5>
+                            <button type="button"
+                                    class="close"
+                                    (click)="onClose()">&times;</button>
+                     </div>
+
+                     <div class="modal-body">
+                            <form>
+                                   <span for="">Name</span>
+                                   <input type="text"
+                                          name="name"
+                                          [(ngModel)]="data.name">
+
+                                   <span for="">CardID</span>
+                                   <input type="text"
+                                          name="cardId"
+                                          [(ngModel)]="data.cardId">
+                            </form>
+                     </div>
+
+
+                     <div class="modal-footer">
+                            <button type="button"
+                                    (click)="onSubmit()">Save changes</button>
+
+                     </div>
+              </div>
+       </div>
+</div>

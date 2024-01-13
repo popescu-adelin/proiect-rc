@@ -1,0 +1,65 @@
+<div class="mat-elevation-z8">
+    <table mat-table
+           [dataSource]="data"
+           class="mat-elevation-z8">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell
+                *matHeaderCellDef> Name </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Email Column (only for employees) -->
+        <ng-container matColumnDef="cardId">
+            <th mat-header-cell
+                *matHeaderCellDef> CardID </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.cardId}} </td>
+        </ng-container>
+
+        <!-- Position Column (only for employees) -->
+        <ng-container matColumnDef="status">
+            <th mat-header-cell
+                *matHeaderCellDef> Status </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.status ==0?' Out of office ':' Working ' }}
+            </td>
+        </ng-container>
+
+        <!-- Position Column (only for employees) -->
+        <ng-container matColumnDef="startTime">
+            <th mat-header-cell
+                *matHeaderCellDef> Starting at </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element?.clocking?.arivingTime | date:'short' ?? 'NA'}}
+            </td>
+        </ng-container>
+
+        <!-- Position Column (only for employees) -->
+        <ng-container matColumnDef="stopTime">
+            <th mat-header-cell
+                *matHeaderCellDef> Leaving at </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element?.clocking?.leavingTime | date:'short' ?? 'NA'}}
+            </td>
+        </ng-container>
+
+        <!-- Position Column (only for employees) -->
+        <ng-container matColumnDef="workTime">
+            <th mat-header-cell
+                *matHeaderCellDef> Work time </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element?.clocking?.workTime?.substring(0,5) ?? 'NA'}}
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row
+            *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row
+            *matRowDef="let row; columns: displayedColumns;"
+            (dblclick)="displayEditModal(row)"></tr>
+    </table>
+</div>

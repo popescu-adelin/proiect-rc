@@ -1,0 +1,16 @@
+<h1>Employees</h1>
+
+
+<app-list [data]="employees"
+          (submit)="afterAction()"
+          type="employee"></app-list>
+<div>
+    <button (click)="openAddEmployeeModal()">Add new employee</button>
+</div>
+
+<app-modal [isVisible]="showModal"
+           title="Add Employee"
+           type="employee"
+           (close)="afterAction()">
+    <!-- Add form or content here -->
+</app-modal>
